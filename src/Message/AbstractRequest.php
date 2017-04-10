@@ -98,6 +98,26 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('issuer', $value);
     }
 
+    public function getLanguage()
+    {
+        return $this->getParameter('language');
+    }
+
+    public function setLanguage($value)
+    {
+        return $this->setParameter('language', $value);
+    }
+
+    public function getExpirationPeriod()
+    {
+        return $this->getParameter('expirationPeriod');
+    }
+
+    public function setExpirationPeriod($value)
+    {
+        return $this->setParameter('expirationPeriod', $value);
+    }
+
     protected function getBaseData($action)
     {
         $this->validate('acquirer', 'testMode', 'merchantId', 'subId', 'publicKeyPath', 'privateKeyPath', 'privateKeyPassphrase');

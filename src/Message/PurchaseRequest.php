@@ -18,7 +18,7 @@ class PurchaseRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('issuer', 'amount', 'currency', 'returnUrl');
+        $this->validate('issuer', 'amount', 'currency', 'returnUrl', 'language', 'expirationPeriod');
 
         $data = $this->getBaseData('AcquirerTrxReq');
         $data->Issuer->issuerID = $this->getIssuer();
@@ -28,8 +28,8 @@ class PurchaseRequest extends AbstractRequest
         $data->Transaction->purchaseID = $this->getTransactionId();
         $data->Transaction->amount = $this->getAmount();
         $data->Transaction->currency = $this->getCurrency();
-        $data->Transaction->expirationPeriod = static::EXPIRATION_PERIOD;
-        $data->Transaction->language = static::LANGUAGE;
+        $data->Transaction->expirationPeriod = $this->getExpirationPeriod();
+        $data->Transaction->language = $this->getLanguage();
         $data->Transaction->description = $this->getDescription();
         $data->Transaction->entranceCode = sha1(uniqid());
 
