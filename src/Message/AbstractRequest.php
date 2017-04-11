@@ -22,8 +22,6 @@ use Omnipay\Common\Exception\InvalidRequestException;
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    const LANGUAGE = 'nl';
-    const EXPIRATION_PERIOD = 'PT10M';
     const IDEAL_VERSION = '3.3.1';
     const IDEAL_NS = 'http://www.idealdesk.com/ideal/messages/mer-acq/3.3.1';
     const XMLDSIG_NS = 'http://www.w3.org/2000/09/xmldsig#';
