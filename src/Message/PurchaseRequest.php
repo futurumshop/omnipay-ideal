@@ -18,7 +18,7 @@ class PurchaseRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('issuer', 'amount', 'currency', 'returnUrl', 'language', 'expirationPeriod');
+        $this->validate('issuer', 'amount', 'currency', 'returnUrl', 'language', 'expirationPeriod', 'description');
 
         $data = $this->getBaseData('AcquirerTrxReq');
         $data->Issuer->issuerID = $this->getIssuer();

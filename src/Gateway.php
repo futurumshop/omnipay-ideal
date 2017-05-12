@@ -32,6 +32,10 @@ class Gateway extends AbstractGateway
             'privateKeyPath' => '',
             'privateKeyPassphrase' => '',
             'testMode' => false,
+            'language' => '',
+            'description' => '',
+            'expirationPeriod' => '',
+            'merchantReturnURL' => ''
         );
     }
 
@@ -93,6 +97,26 @@ class Gateway extends AbstractGateway
     public function setPrivateKeyPassphrase($value)
     {
         return $this->setParameter('privateKeyPassphrase', $value);
+    }
+
+    public function setLanguage($value)
+    {
+        return $this->setParameter('language', $value);
+    }
+
+    public function setExpirationPeriod($value)
+    {
+        return $this->setParameter('expirationPeriod', $value);
+    }
+
+    public function setDescription($value)
+    {
+        return $this->setParameter('description', $value);
+    }
+
+    public function setReturnUrl($value)
+    {
+        return $this->setParameter('merchantReturnURL', $value);
     }
 
     public function fetchIssuers(array $parameters = array())
