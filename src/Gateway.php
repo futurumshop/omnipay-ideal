@@ -35,7 +35,7 @@ class Gateway extends AbstractGateway
             'language' => '',
             'description' => '',
             'expirationPeriod' => '',
-            'merchantReturnURL' => ''
+            'returnURL' => ''
         );
     }
 
@@ -116,7 +116,7 @@ class Gateway extends AbstractGateway
 
     public function setReturnUrl($value)
     {
-        return $this->setParameter('merchantReturnURL', $value);
+        return $this->setParameter('returnURL', $value);
     }
 
     public function fetchIssuers(array $parameters = array())
