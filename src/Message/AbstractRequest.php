@@ -270,12 +270,19 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         throw new InvalidRequestException("Invalid public key");
     }
 
+    /**
+     * @return \Omnipay\Common\Message\ResponseInterface
+     * @throws InvalidRequestException
+     */
     public function send()
     {
         $data = $this->signXML($this->getData()->asXML());
-        $httpResponse = $this->httpClient->post($this->getEndpoint(), null, $data)->send();
+        $httpResponse = $this->httpClient->request('POST', $this->getEndpoint(), [], $data);
 
-        return $this->response = $this->parseResponse($this, $httpResponse->xml());
+        return $this->response = $this->parseResponse(
+            $this,
+            simplexml_load_string($httpResponse->getBody())
+        );
     }
 
     public function sendData($data){
@@ -284,6 +291,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public abstract function parseResponse(\Omnipay\Common\Message\RequestInterface $request, $data);
 
+    /**
+     * @return string
+     * @throws InvalidRequestException
+     */
     public function getEndpoint()
     {
         $this->validate('acquirer');
