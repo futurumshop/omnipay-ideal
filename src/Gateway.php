@@ -12,6 +12,7 @@
 namespace Omnipay\Ideal;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Message\RequestInterface;
 
 /**
  * iDeal Gateway
@@ -132,5 +133,77 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Ideal\Message\CompletePurchaseRequest', $parameters);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function completeAuthorize(array $options = []): RequestInterface
+    {
+        return parent::completeAuthorize($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function authorize(array $options = []): RequestInterface
+    {
+        return parent::authorize($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function void(array $options = []): RequestInterface
+    {
+        return parent::void($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function capture(array $options = []): RequestInterface
+    {
+        return parent::capture($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function createCard(array $options = []): RequestInterface
+    {
+        return parent::createCard($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function updateCard(array $options = []): RequestInterface
+    {
+        return parent::updateCard($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function deleteCard(array $options = []): RequestInterface
+    {
+        return parent::deleteCard($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface
+     */
+    public function refund(array $options = []): RequestInterface
+    {
+        return parent::refund($options);
     }
 }
